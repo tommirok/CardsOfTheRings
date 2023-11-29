@@ -3,9 +3,10 @@ import { mockContents } from '../App';
 type InputProps = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   inputRef: React.RefObject<HTMLInputElement>;
-  validInput?: boolean;
 };
 const Input = (props: InputProps) => {
+    console.log('render Input');
+    
   return (
     <>
       <form
@@ -13,11 +14,9 @@ const Input = (props: InputProps) => {
         onSubmit={props.onSubmit}
       >
         <label>{mockContents.inputIdLabel}</label>
-        <input ref={props.inputRef} type="number" min="1" />
+        <input className='bg-gray-light ' ref={props.inputRef} type="number" min="1" />
         <input type="submit" hidden />
-        {props.inputRef?.current?.value === '' && (
-          <label>{mockContents.formValidation}</label>
-        )}{' '}
+     
       </form>
     </>
   );
