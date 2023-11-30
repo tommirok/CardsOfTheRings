@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+    html {
+      @apply bg-gray-light text-gray-dark dark:bg-gray-dark dark:text-gray-light font-serif;
+    } 
     h1 {
       @apply text-2xl;
     }
     h2 {
       @apply text-xl;
     }
+   
     /* ... */
   }
 /* disable arrows on input */

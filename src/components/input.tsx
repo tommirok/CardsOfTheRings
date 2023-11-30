@@ -10,11 +10,11 @@ const Input = (props: InputProps) => {
   return (
     <>
       <form
-        className="flex flex-col w-auto md:w-3/12 "
+        className="flex flex-col w-auto md:w-3/12"
         onSubmit={props.onSubmit}
       >
         <label>{mockContents.inputIdLabel}</label>
-        <input className='bg-gray-light ' ref={props.inputRef} type="number" min="1" />
+        <input className='bg-gray-light text-gray-dark rounded-md p-1' ref={props.inputRef} type="number" min="1" />
         <input type="submit" hidden />
      
       </form>
