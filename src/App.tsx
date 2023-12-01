@@ -64,7 +64,6 @@ const DetailCard = (props: DetailCardProps) => {
           className="w-full bg-no-repeat m-5 rounded-lg"
           style={{ backgroundImage: `url(${props.image})` }}
         ></div>
-        
         {/*  <img className="w-80 rounded-xl" src={props.image} alt={'Hero Image'} /> */}
       </div>
     </div>

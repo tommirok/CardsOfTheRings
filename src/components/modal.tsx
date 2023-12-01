@@ -42,7 +42,7 @@ const Modal = ({
       <div className="w-full flex flex-row items-center justify-between p-5">
         <h1>{title}</h1>
         <button className="" onClick={closeModal}>
-          <img className="md:w-7 w-5" src="/close.png" alt="Close x" />
+          <img className="md:w-7 w-5" src="/CardsOfTheRings/close.png" alt="Close x" />
         </button>
       </div>
 
