@@ -14,13 +14,13 @@
 ### Features:
 - Mobile and Desktop responsive UI/UX
 - Search card decks by id
- View cards and data in modernized card modal
- Admire clean animations and transiotions
- Loading Data
- Error handling
- Theming heroes by sphere
- Gradients
- Components coded for reusability
+- View cards and data in modernized card modal
+- Admire clean animations and transiotions
+- Loading Data
+- Error handling
+- Theming heroes by sphere
+- Gradients
+- Components coded for reusability
 
 <img width="375" alt="image" src="https://github.com/tommirok/CardsOfTheRings/assets/25888523/3d0ef46a-e800-4807-b7f1-d28afbc7a209">
 
