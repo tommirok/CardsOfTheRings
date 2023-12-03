@@ -15,5 +15,7 @@ export const getCards = async (deckId: number): Promise<Card[]> => {
       await fetch(`${BaseUrl}/card/${code}`).then((res) => res.json())
   );
   const cardsArr: Card[] = await Promise.all(cards);
+  cardsArr.map((card) => console.log(JSON.stringify(card,null,2)));
+
   return cardsArr;
 };

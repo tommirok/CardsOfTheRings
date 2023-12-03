@@ -1,7 +1,7 @@
 import { memo, useRef, useEffect, useState } from 'react';
 import { HeroCard, mockContents } from '../App';
 import { getCards } from '../api';
-import Input from '../components/input';
+import Input from './input';
 import { Card } from '../types';
 
 const initialDeckId = Math.floor(Math.random() * 10) + 1;
@@ -24,7 +24,7 @@ const Deck = memo(() => {
   }, []);
 
   const [cards, setCards] = useState<Card[]>([]);
-
+  
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

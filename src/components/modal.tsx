@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
-
+import { sphereThemes } from '../themes/sphereThemes';
 type ModalProps = {
   title: string;
   isOpen: boolean;
   closeModal: () => void;
   children: React.ReactNode;
   cardCode: string;
+  theme: string;
 };
 const Modal = ({
   isOpen,
@@ -13,6 +14,7 @@ const Modal = ({
   children,
   cardCode,
   title,
+  theme,
 }: ModalProps) => {
   const ref = useRef<HTMLDialogElement>(null);
 
@@ -32,17 +34,28 @@ const Modal = ({
       window.location.href.includes('#modal') && window.history.back();
     }
   }, [isOpen, closeModal]);
+  console.log(theme);
 
   return (
     <dialog
-      className="backdrop:opacity-70 backdrop:backdrop-blur-3xl rounded-lg"
+      style={{ backgroundColor: `${sphereThemes[theme]}`, color: `${sphereThemes[theme]}` }}
+      className={`backdrop:opacity-70 backdrop:backdrop-blur-3xl z-50 rounded-xl`}
       ref={ref}
       onCancel={closeModal}
     >
-      <div className="w-full flex flex-row items-center justify-between p-5">
-        <h1>{title}</h1>
+      <div
+        style={{ borderColor: sphereThemes[theme] }}
+        className="rounded-xl w-full flex flex-row items-center justify-between p-5 bg-gray-dark border-4 border-b-0"
+      >
+        <h1 style={{ color: sphereThemes[theme] }} className="font-bold">
+          {title}
+        </h1>
         <button className="" onClick={closeModal}>
-          <img className="md:w-7 w-5" src="/CardsOfTheRings/close.png" alt="Close x" />
+          <img
+            className="md:w-7 w-5"
+            src="/CardsOfTheRings/close.png"
+            alt="Close x"
+          />
         </button>
       </div>
 

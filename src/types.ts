@@ -11,6 +11,9 @@ export type Card = {
   deck_limit: number;
   imagesrc: string;
   text: string;
+  sphere_code: string;
+  sphere_name: string;
+  traits: string;
 };
 export type Deck = {
   heroes: {
