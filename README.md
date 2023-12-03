@@ -5,9 +5,22 @@
 
 ### yarn run dev - to start the dev server
 
+### yarn build && yarn vite preview to run build locally - not production environment
+
+### or you can visit pages deployment https://tommirok.github.io/CardsOfTheRings/ 
+
 ### Created with bun, bundles with vite, but you can use yarn or npm as well
 
-# pages deployment https://tommirok.github.io/CardsOfTheRings/ 
-### Use mobile or desktop
-### Refresh not working in pages yet due the lack of router support
+### Features:
+
+### Mobile and Desktop responsive UI/UX
+### Search card decks by id
+### View cards and data in modernized card modal
+### Admire clean animations and transiotions
+### Loading Data
+### Error handling
+### Theming heroes by sphere
+### Gradients
+### Components coded for reusability
+
 
