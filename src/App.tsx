@@ -7,14 +7,14 @@ export const mockContents = {
   inputIdLabel: 'Search for a decklist here',
   formValidation: 'Enter number greater than 0',
   heroesListLabel: 'Here are your heroes',
+  error: 'Something went wrong, please try again',
 };
 
 const App = () => {
-  console.log('render App');
   return (
     <>
-      <div className="h-full w-full flex flex-col md:flex-row  justify-center items-center ">
-        <div className="w-5/6 h-5/6">
+      <div className="h-full w-full flex flex-col justify-center items-center md:flex-row">
+        <div className="w-[85%] h-[95%] md:w-5/6 md:h-5/6">
           <Header title={mockContents.appTitle} />
           <Deck />
         </div>

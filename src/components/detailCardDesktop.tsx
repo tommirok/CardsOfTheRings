@@ -19,14 +19,14 @@ const DetailCardDeskTop = (props: DetailCardProps) => {
   const { sphere_code } = props.cardDetails;
   return (
     <>
-      <div className="flex justify-evenly h-[70vh] w-[70vw] p-2">
+      <div className="h-[70vh] w-[70vw] p-2 flex justify-evenly">
         <img
-          className="rounded-xl h-[100%] "
+          className="h-[100%] rounded-xl"
           src={props.image}
           alt={'Hero Image'}
         />
 
-        <div className="h-[80%] flex flex-col ml-5 w-[40%]">
+        <div className="h-[80%] w-[40%] flex flex-col ml-5">
           <Details cardDetails={props.cardDetails} image={''} />
         </div>
         <div className="h-[80%] flex flex-col ml-5 w-full">

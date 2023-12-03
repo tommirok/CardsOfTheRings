@@ -20,10 +20,15 @@ export default {
       'gray-light': '#d3dce6',
       brown: '#332c2c',
     },
+    extend: {
+      animation: {
+        bounce200: 'bounce 1s infinite 200ms',
+        bounce400: 'bounce 1s infinite 400ms',
+      },
+    },
     fontFamily: {
       serif: ['Merriweather', 'serif'],
     },
   },
   plugins: [],
 };
-

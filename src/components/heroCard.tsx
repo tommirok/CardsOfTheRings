@@ -11,7 +11,6 @@ type HeroProps = {
 };
 export const HeroCard = memo((props: HeroProps) => {
   const { cardDetails } = props;
-  console.log('render HeroCard');
   const [isModalOpen, setModal] = useState(false);
   const [isImageLoaded, setImageLoaded] = useState(false);
   const image = `${imageBaseUrl}${cardDetails.imagesrc}`;
@@ -25,7 +24,7 @@ export const HeroCard = memo((props: HeroProps) => {
           className="transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 duration-500"
         >
           <img
-            className="w-80 rounded-xl"
+            className="w-[100%] md:w-80 rounded-xl"
             style={{ display: isImageLoaded ? 'block' : 'none' }}
             src={image}
             alt={'Hero Image'}
