@@ -6,7 +6,9 @@ import Modal from './components/modal';
 import Deck from './components/deck';
 import { Card } from './types';
 import useIsMobile from './hooks/useIsMobileScreen';
-import ReactHtmlParser from 'react-html-parser';
+import DetailCardDeskTop, {
+  DetailCardProps,
+} from './components/detailCardDesktop';
 
 export const mockContents = {
   appTitle: 'Cards of the Rings',
@@ -57,57 +59,7 @@ export const HeroCard = memo((props: HeroProps) => {
     </>
   );
 });
-type DetailCardProps = {
-  cardDetails: Card;
-  image: string;
-};
-type DetailRowProps = {
-  label: string;
-  value: string | number;
-  html?: React.ReactNode;
-};
-const DetailRow = (props: DetailRowProps) => (
-  <div className="flex flex-row items-center justify-center bg-gray-dark rounded-lg p-2 mb-5">
-    {!props.html ? (
-      <p className="font-bold">
-        {`${props.label}${props.label && ': '}${props.value}`}
-      </p>
-    ) : (
-      <p className='font-bold'>{props.html}</p>
-    )}
-  </div>
-);
-const DetailCardDeskTop = (props: DetailCardProps) => {
-  return (
-    <>
-      <div className="flex justify-evenly h-[70vh] w-[50vw] p-2">
-        <img
-          className="rounded-xl h-[80%] "
-          src={props.image}
-          alt={'Hero Image'}
-        />
-        <div className="h-[80%] flex flex-col ml-5 w-[30%]">
-          <DetailRow label="Type" value={props.cardDetails.type_name} />
-          <DetailRow label="Threat" value={props.cardDetails.threat} />
-          <DetailRow label="Willpower" value={props.cardDetails.willpower} />
-          <DetailRow label="Attack" value={props.cardDetails.attack} />
-          <DetailRow label="Defence" value={props.cardDetails.defense} />
-          <DetailRow label="Health" value={props.cardDetails.health} />
-          <DetailRow label="Sphere" value={props.cardDetails.sphere_name} />
-        </div>
-        <div className="h-[80%] flex flex-col ml-5 w-full">
-          <DetailRow
-            label=""
-            value=""
-            html={ReactHtmlParser(props.cardDetails.text)}
-          />
-          <DetailRow label="" value={props.cardDetails.traits} />
 
-        </div>
-      </div>
-    </>
-  );
-};
 const DetailCardMobile = (props: DetailCardProps) => {
   return (
     <>
@@ -123,7 +75,6 @@ const DetailCardMobile = (props: DetailCardProps) => {
     </>
   );
 };
-
 const App = () => {
   console.log('render App');
   return (

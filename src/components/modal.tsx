@@ -38,14 +38,14 @@ const Modal = ({
 
   return (
     <dialog
-      style={{ backgroundColor: `${sphereThemes[theme]}`, color: `${sphereThemes[theme]}` }}
+      style={{ background: `linear-gradient(to bottom,${sphereThemes[theme]}, black)`, color: `black` }}
       className={`backdrop:opacity-70 backdrop:backdrop-blur-3xl z-50 rounded-xl`}
       ref={ref}
       onCancel={closeModal}
     >
       <div
         style={{ borderColor: sphereThemes[theme] }}
-        className="rounded-xl w-full flex flex-row items-center justify-between p-5 bg-gray-dark border-4 border-b-0"
+        className="rounded-xl w-full flex flex-row items-center justify-between p-5 bg-gradient-to-r from-gray-dark border-4 border-b-0"
       >
         <h1 style={{ color: sphereThemes[theme] }} className="font-bold">
           {title}
