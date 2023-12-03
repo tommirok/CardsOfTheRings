@@ -12,9 +12,8 @@
 ### Created with bun, bundles with vite, but you can use yarn or npm as well
 
 ### Features:
-
- * Mobile and Desktop responsive UI/UX
- * Search card decks by id
+- Mobile and Desktop responsive UI/UX
+- Search card decks by id
  View cards and data in modernized card modal
  Admire clean animations and transiotions
  Loading Data
