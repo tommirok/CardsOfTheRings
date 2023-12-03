@@ -1,6 +1,7 @@
 import { sphereThemes } from '../themes/sphereThemes';
-import { DetailCardProps, DetailRow, Details } from './detailCardDesktop';
+import { DetailCardProps } from './detailCardDesktop';
 import ReactHtmlParser from 'react-html-parser';
+import { DetailRow, Details } from './details';
 
 export type DetailRowMobileProps = {
   label: string;
