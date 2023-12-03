@@ -4,8 +4,14 @@
 
 @layer base {
     html {
-      @apply bg-gray-dark text-gray-light font-serif;
-    } 
+      @apply bg-gray-dark text-gray-light m-0 p-0 h-[100%] font-serif;
+    }
+    body {
+      @apply m-0 p-0 h-[100%];
+    }
+    #root {
+      @apply m-0 p-0 h-[100%];
+    }
     h1 {
       @apply text-2xl;
     }

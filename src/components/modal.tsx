@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { sphereThemes } from '../themes/sphereThemes';
+import useIsMobile from '../hooks/useIsMobileScreen';
 type ModalProps = {
   title: string;
   isOpen: boolean;
@@ -34,18 +35,22 @@ const Modal = ({
       window.location.href.includes('#modal') && window.history.back();
     }
   }, [isOpen, closeModal]);
-  console.log(theme);
-
+  const isMobile = useIsMobile();
   return (
     <dialog
-      style={{ background: `linear-gradient(to bottom,${sphereThemes[theme]}, black)`, color: `black` }}
-      className={`backdrop:opacity-70 backdrop:backdrop-blur-3xl z-50 rounded-xl`}
+      style={{
+        width: isMobile ? '100vw' : '',
+        height: isMobile ? '100vh' : '',
+        background: `linear-gradient(to bottom,${sphereThemes[theme]}, black)`,
+        color: `black`,
+      }}
+      className={`md:m-auto backdrop:opacity-70 backdrop:backdrop-blur-3xl z-50 rounded-xl overflow-clip`}
       ref={ref}
       onCancel={closeModal}
     >
       <div
-        style={{ borderColor: sphereThemes[theme] }}
-        className="rounded-xl w-full flex flex-row items-center justify-between p-5 bg-gradient-to-r from-gray-dark border-4 border-b-0"
+        style={{ borderColor: isMobile ? '' : sphereThemes[theme] }}
+        className="rounded-xl rounded-b-none w-full flex flex-row items-center justify-between p-5 bg-gradient-to-r from-gray-dark "
       >
         <h1 style={{ color: sphereThemes[theme] }} className="font-bold">
           {title}

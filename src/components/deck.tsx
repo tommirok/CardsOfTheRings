@@ -1,8 +1,9 @@
 import { memo, useRef, useEffect, useState } from 'react';
-import { HeroCard, mockContents } from '../App';
+import { mockContents } from '../App';
 import { getCards } from '../api';
 import Input from './input';
 import { Card } from '../types';
+import { HeroCard } from './heroCard';
 
 const initialDeckId = Math.floor(Math.random() * 10) + 1;
 
@@ -24,7 +25,7 @@ const Deck = memo(() => {
   }, []);
 
   const [cards, setCards] = useState<Card[]>([]);
-  
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -48,7 +49,7 @@ const Deck = memo(() => {
         <>
           <h1 className="my-5">{mockContents.heroesListLabel}</h1>
           <div
-            className={`w-full h-full flex flex-col md:flex-row md:items-start items-center md:justify-evenly`}
+            className={`w-full h-auto flex flex-col justify-start items-center md:flex-row md:items-start md:justify-evenly`}
           >
             {cards.map((card, key) => (
               <HeroCard key={key} cardDetails={card} />
