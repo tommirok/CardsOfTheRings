@@ -1,7 +1,6 @@
 import { sphereThemes } from '../themes/sphereThemes';
 import { DetailCardProps } from './detailCardDesktop';
-import ReactHtmlParser from 'react-html-parser';
-import { DetailRow, Details } from './details';
+import { Details, ExtraDetails } from './details';
 
 export type DetailRowMobileProps = {
   label: string;
@@ -21,7 +20,7 @@ const DetailCardMobile = (props: DetailCardProps) => {
         }}
         className="w-[40%] h-full opacity-95 justify-between p-6 flex flex-col"
       >
-        <Details cardDetails={props.cardDetails} image={''} />
+        <Details cardDetails={props.cardDetails} />
       </div>
       <div
         style={{
@@ -29,18 +28,7 @@ const DetailCardMobile = (props: DetailCardProps) => {
         }}
         className="w-full h-full opacity-95 flex flex-col items-center p-5"
       >
-        {/* EXTRA DETAILS */}
-        <DetailRow
-          label=""
-          value=""
-          html={ReactHtmlParser(props.cardDetails.text)}
-          colorDetails={sphereThemes[sphereColor]}
-        />
-        <DetailRow
-          label=""
-          value={props.cardDetails.traits}
-          colorDetails={sphereThemes[sphereColor]}
-        />
+        <ExtraDetails cardDetails={props.cardDetails} />
       </div>
     </div>
   );

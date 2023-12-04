@@ -1,24 +1,18 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { sphereThemes } from '../themes/sphereThemes';
 import useIsMobile from '../hooks/useIsMobileScreen';
+import { CardDetailStateContext } from './heroCard';
+
 type ModalProps = {
-  title: string;
   isOpen: boolean;
   closeModal: () => void;
   children: React.ReactNode;
-  cardCode: string;
-  theme: string;
 };
-const Modal = ({
-  isOpen,
-  closeModal,
-  children,
-  cardCode,
-  title,
-  theme,
-}: ModalProps) => {
+const Modal = ({ isOpen, closeModal, children }: ModalProps) => {
   const ref = useRef<HTMLDialogElement>(null);
-
+  // Card details as context
+  const cardDetails = useContext(CardDetailStateContext);
+  const { code, name, sphere_code } = cardDetails;
   useEffect(() => {
     if (isOpen) {
       ref.current?.showModal();
@@ -26,7 +20,7 @@ const Modal = ({
       window.history.pushState(
         null,
         '',
-        `${window.location}?card=${cardCode}#modal`
+        `${window.location}?card=${code}#modal`
       );
     } else {
       ref.current?.close();
@@ -41,7 +35,7 @@ const Modal = ({
       style={{
         width: isMobile ? '100vw' : '',
         height: isMobile ? '100vh' : '',
-        background: `linear-gradient(to bottom,${sphereThemes[theme]}, black)`,
+        background: `linear-gradient(to bottom,${sphereThemes[sphere_code]}, black)`,
         color: `black`,
       }}
       className={`md:m-auto backdrop:opacity-70 backdrop:backdrop-blur-3xl z-50 rounded-xl overflow-clip`}
@@ -49,11 +43,11 @@ const Modal = ({
       onCancel={closeModal}
     >
       <div
-        style={{ borderColor: isMobile ? '' : sphereThemes[theme] }}
+        style={{ borderColor: isMobile ? '' : sphereThemes[sphere_code] }}
         className="rounded-xl rounded-b-none w-full flex flex-row items-center justify-between p-5 bg-gradient-to-r from-gray-dark "
       >
-        <h1 style={{ color: sphereThemes[theme] }} className="font-bold">
-          {title}
+        <h1 style={{ color: sphereThemes[sphere_code] }} className="font-bold">
+          {name}
         </h1>
         <button className="" onClick={closeModal}>
           <img

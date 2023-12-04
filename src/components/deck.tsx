@@ -4,17 +4,21 @@ import { getCards } from '../api';
 import Input from './input';
 import { Card } from '../types';
 import { HeroCard } from './heroCard';
+import Loader from './loader';
 
 const initialDeckId = Math.floor(Math.random() * 10) + 1;
 
 const Deck = memo(() => {
+  //since there is no router in this app, we need prefix to change url params
   const paramsPrefix = 'decks?id=';
   const inputIdRef = useRef<HTMLInputElement>(null);
+
   const [cards, setCards] = useState<Card[]>([]);
   const [error, setError] = useState(false);
   const [loading, setloading] = useState(false);
 
   useEffect(() => {
+    //fetch cards initially onload for improved landing experience
     const fetchInitialCards = async () => {
       const cards = await getCards(initialDeckId);
       setCards(cards);
@@ -23,15 +27,18 @@ const Deck = memo(() => {
   }, []);
 
   useEffect(() => {
-    //change url params when
+    //change url params according the initial load of decks
     window.history.pushState(null, '', `${paramsPrefix}${initialDeckId}`);
   }, []);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // renders loader while fetching data
     setloading(true);
+    // set the error to false to remove the error message on retry
     setError(false);
     if (inputIdRef.current) {
+      // change url params according to the requested deck
       window.history.replaceState(
         null,
         '',
@@ -39,28 +46,19 @@ const Deck = memo(() => {
       );
       try {
         const cards = await getCards(Number(inputIdRef.current?.value));
-        inputIdRef.current.value = '';
         setCards(cards);
       } catch (error) {
         setError(true);
       } finally {
+        // clean up
         setloading(false);
+        inputIdRef.current.value = '';
       }
     }
   };
-  const Loader = () => {
-    let circleCommonClasses = 'h-5 w-5 bg-gray-light rounded-full';
-
-    return (
-      <div className="flex">
-        <div className={`${circleCommonClasses} mr-1 animate-bounce`}></div>
-        <div className={`${circleCommonClasses} mr-1 animate-bounce200`}></div>
-        <div className={`${circleCommonClasses} animate-bounce400`}></div>
-      </div>
-    );
-  };
   return (
     <>
+    
       <Input onSubmit={onSubmit} inputRef={inputIdRef} />
       {cards.length ? (
         <>

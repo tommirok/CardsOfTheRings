@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { createContext, memo, useState } from 'react';
 import { Card } from '../types';
 import { imageBaseUrl } from '../api';
 import useIsMobile from '../hooks/useIsMobileScreen';
@@ -9,9 +9,13 @@ import DetailCardMobile from './detailCardMobile';
 type HeroProps = {
   cardDetails: Card;
 };
+  // Lets use context in modal just to showcase it, but it's not really needed and not used in stateless detailcomponents
+export const CardDetailStateContext = createContext<Card>({} as Card);
+
 export const HeroCard = memo((props: HeroProps) => {
   const { cardDetails } = props;
   const [isModalOpen, setModal] = useState(false);
+  // To prevent stuttering when loading deck hero images
   const [isImageLoaded, setImageLoaded] = useState(false);
   const image = `${imageBaseUrl}${cardDetails.imagesrc}`;
   const isMobile = useIsMobile();
@@ -32,19 +36,15 @@ export const HeroCard = memo((props: HeroProps) => {
           />
         </button>
       </div>
-      <Modal
-        title={cardDetails.name}
-        cardCode={cardDetails.code}
-        isOpen={isModalOpen}
-        closeModal={() => setModal(false)}
-        theme={cardDetails.sphere_code}
-      >
-        {isMobile ? (
-          <DetailCardMobile image={image} {...props} />
-        ) : (
-          <DetailCardDeskTop image={image} {...props} />
-        )}
-      </Modal>
+      <CardDetailStateContext.Provider value={cardDetails}>
+        <Modal isOpen={isModalOpen} closeModal={() => setModal(false)}>
+          {isMobile ? (
+            <DetailCardMobile image={image} {...props} />
+          ) : (
+            <DetailCardDeskTop image={image} {...props} />
+          )}
+        </Modal>
+      </CardDetailStateContext.Provider>
     </>
   );
 });
