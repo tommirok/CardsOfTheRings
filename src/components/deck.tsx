@@ -1,4 +1,4 @@
-import { memo, useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { mockContents } from '../App';
 import { getCards } from '../api';
 import Input from './input';
@@ -8,7 +8,7 @@ import Loader from './loader';
 
 const initialDeckId = Math.floor(Math.random() * 10) + 1;
 
-const Deck = memo(() => {
+const Deck = () => {
   //since there is no router in this app, we need prefix to change url params
   const paramsPrefix = 'decks?id=';
   const inputIdRef = useRef<HTMLInputElement>(null);
@@ -58,7 +58,6 @@ const Deck = memo(() => {
   };
   return (
     <>
-    
       <Input onSubmit={onSubmit} inputRef={inputIdRef} />
       {cards.length ? (
         <>
@@ -81,5 +80,5 @@ const Deck = memo(() => {
       ) : null}
     </>
   );
-});
+};
 export default Deck;
